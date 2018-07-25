@@ -14,8 +14,8 @@ form = {x.attrib["name"]: x.attrib["value"] for x in hidden_inputs}
 print(form)
 
 form = {
-	"username":"aninda_ghosh@srmuniv.edu.in",
-	"password":"Puchumunu251399",
+	"username":"",
+	"password":"",
 	"client_portal":"true",
 	"serviceurl":"https://academia.srmuniv.ac.in/",
 	"servicename":"ZohoCreator",
@@ -40,19 +40,9 @@ headers = {
 	"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
 }
 
-# form = {
-# 	"username":"aninda_ghosh@srmuniv.edu.in",
-# 	"password":"Puchumunu251399",
-# 	"pattern":"/^[a-zA-Z0-9._'+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/i"
-# }
-
 response = s.post(login_url, data=form, headers=headers)
 
 print(response.url)
 
 # browser = RoboBrowser()
 # form = browser.get_form(id="signinForm")
-
-# form["username"] = "aninda_ghosh@srmuniv.edu.in"
-# form["password"] = "Puchumunu251399"
-# form["pattern"] = "/^[a-zA-Z0-9._'+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/i"
