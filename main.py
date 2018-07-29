@@ -30,9 +30,12 @@ submit_button.submit()
 
 # Go to attendance
 
-# driver.find_element_by_tag_name('body').send_keys(Keys.COMMAND + 't') 
-time.sleep(5)
+time.sleep(6)
 print("Logged in!")
 driver.get(after_login)
+time.sleep(3)
 
-#driver.get(after_login)
+for i in range(2,10):
+	sub = driver.find_element_by_xpath("//*[@id='zc-viewcontainer_My_Attendance']/div/div[4]/div[1]/table[2]/tbody/tr["+str(i)+"]/td[2]")
+	att = driver.find_element_by_xpath("//*[@id='zc-viewcontainer_My_Attendance']/div/div[4]/div[1]/table[2]/tbody/tr["+str(i)+"]/td[9]")
+	print(sub.text + " - " + att.text + "%")
