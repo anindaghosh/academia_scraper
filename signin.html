@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="/accounts/signin.js?servicename=ZohoCreator&serviceurl=https%3A%2F%2Facademia.srmuniv.ac.in%2F&portal=10002227248&client_portal=true&service_language=en"></script><title>Sign In</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<script>
+function submitSigninForm()
+{
+	var email = jQuery.trim($("#Email").val());	 //No I18N
+	var password = jQuery.trim($("#Password").val());	 //No I18N
+	
+	if(email.length > 50)
+	{
+		$("#emailErr").html('Email address cannot be more than 50 characters').show(); //NO I18N
+		$("#Email").focus();	 //No I18N
+		return false;
+	}
+    var pattern = /^[a-zA-Z0-9._'+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/i;
+	if(email == "" || !pattern.test(email))
+	{
+		$("#emailErr").html('Please enter valid email address').show(); //NO I18N
+		$("#Email").val("").focus();	 //No I18N
+		return false;
+	}
+	
+	if(password == "")
+	{
+		$("#passwordErr").html('Password cannot be empty').show(); //NO I18N
+		$("#Password").focus();	 //No I18N
+		return false;
+	}
+	
+	//changeKeepmeSigninValue();
+	$("#signinForm").submit();
+}
+</script>
+<style>
+.signinForm{
+	padding:8px;
+}
+.signinForm input[type="text"],.signinForm input[type="password"]{
+	outline:none;
+	display:block;
+	width:100%;
+	border:1px solid #d9d9d9;
+	border-radius:0px;
+	margin:0 0 10px;
+	padding:10px 10px;
+	box-sizing:border-box;
+	transition:0.3s ease;
+	font-size:14px;
+}
+.signinForm input[type="text"]:focus,.signinForm input[type="password"]:focus{
+	border:1px solid #33b5e5 !important;
+	box-shadow:none;
+	color:#333333;
+}
+.signinForm .btn{
+	min-width:90px;
+	color: white;
+	padding:10px 10px;
+	box-sizing:border-box;
+	border:1px solid #d9d9d9;
+	border-radius:0px;
+    background: #33b5e5;
+    cursor: pointer;
+    display:inline-block;
+    transition: 0.3s ease;
+    font-size: 14px;
+    text-shadow:none;
+    font-family: Times;
+    -webkit-appearance: none;
+}
+.signinForm .btn:hover{
+	background: #178ab4;
+	border-color:rgb(217,217,217);
+}
+
+.errormsg {
+    color: #DD4B39;
+    display: block;
+    line-height: 10px;
+    font-family:Times !important;
+    font-size:14px !important;
+}
+
+.input{
+	padding:10px 0;
+}
+input{
+	font-family:BlinkMacSystemFont !important;
+}
+
+.signinForm label{
+	color:#333;
+	font-family: Times;
+	font-size:16px;
+}
+
+.field-msg, .invalid-message{
+	margin-bottom:5px !important;
+	width:100% !important;
+}
+
+.field-msg .error, .invalid-message .error{
+	padding:10px !important;
+	margin-top:0px !important;
+	font-family:Times !important;
+	border-radius:0px !important;
+	background-color:#E6F9FC !important;
+	font-size:14px !important;
+	text-align:center !important;
+	border: 1px solid !important;
+	border-color : rgba(51, 148, 199, 0.22) !important;	
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="signinForm">
+		<form id="signinForm" action="/accounts/signin.ac" name="signinform" method="post" novalidate="true" autocomplete="off">
+		<div><label>Email Address</label></div>
+		<div class="input">
+		<input type="text" placeholder='Email Address' name="username" id="Email" required autofocus onkeyup="$('#emailErr').hide()"></input>
+		<span id="emailErr" class="errormsg" style="display:none"></span>
+		</div>
+		
+		<div><label>Password</label></div>
+		<div class="input">
+		<input type="password" placeholder='Password' name="password" id="Password" required onkeyup="$('#passwordErr').hide()"></input>
+		<span id="passwordErr" class="errormsg" style="display:none"></span>
+		</div>
+		<!--
+		<div class="input">
+        <input type="checkbox" id="Keepsigned" name="sremember"> <label for="Keepsigned">Remember me</label>
+        </div>
+        -->
+        <div class="input">
+        <input class="btn" type="button" onclick="submitSigninForm();" value='Sign In'>
+        </div>
+		</form>
+<div>
+<script type="text/javascript">
+        function onSigninReady() {
+            // To avoid glitches on page load, as we lazy load CSS. 
+             $(document.body).css("visibility", "visible");
+            $(document.signinform).zaSignIn();
+            
+            Form.prototype.showErrors = function(errorObj) {
+					
+					Form.Message.error(this.element, I18N.get("IAM.ERROR.INVALID.CREDENTIAL"));
+			}
+        };
+		function changeKeepmeSigninValue() {
+        	var isKeepMeSignedin = document.getElementById("Keepsigned").value;
+        	if(isKeepMeSignedin == 'on')
+        	{
+        		document.getElementById("Keepsigned").value = "true";
+        	}
+        	else
+        	{
+				document.getElementById("Keepsigned").value = "false";
+        	}
+        }
+
+        
+    </script>
+
+
+</body></html>
